@@ -115,7 +115,7 @@ angular.module('starter.controllers', ['ionic','ionic.cloud'])
 			$scope.emcenter.latLoc = pos.coords.latitude;
 			$scope.emcenter.longLoc = pos.coords.longitude;
              var myPopup = $ionicPopup.show({
-				 template: 'ตำแหน่งของศูนย์ ละติจูด<input type = "number" ng-model = "emcenter.latLoc"><BR/>ตำแหน่งของศูนย์ ลองติจูด<input type = "number" ng-model = "emcenter.longLoc">',
+				 template: 'ตำแหน่งของศูนย์ ละติจูด <input type = "number" ng-model = "emcenter.latLoc"><BR/>ตำแหน่งของศูนย์ ลองติจูด<input type = "number" ng-model = "emcenter.longLoc">',
 				 title: 'ตั้งค่าตำแหน่ง',
 				 scope: $scope,
 				  buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
