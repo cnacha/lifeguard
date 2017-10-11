@@ -1,0 +1,51 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-shade1" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}" align-title="left">
+          <ion-nav-back-button class="no-text">
+            </ion-nav-back-button>
+		
+		
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-android-menu" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+			<!--
+			<ion-nav-buttons side="right">
+				 <button class="button button-icon button-clear ion-android-archive" ng-click="loadTasks()">
+                </button>
+			</ion-nav-buttons>
+			-->
+        </ion-nav-bar>
+        <ion-nav-view name="fabContent"></ion-nav-view>
+        <ion-nav-view name="menuContent" class="expanded" ></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+
+        <ion-content class="side-menu no-header">
+            <ion-list class="no-margin">
+				<ion-item menu-close ui-sref="app.selectLocation" class="item-icon-right pretty-thai-text yellow1-background">
+                   <i class="icon material-icons light-text shadow-text" style="font-weight: 100">&#xE0C8;</i>ตั้งค่าตำแหน่ง
+                </ion-item>
+                <ion-item menu-close ui-sref="app.logout" class="item-icon-right pretty-thai-text yellow2-background">
+                    <i class="icon material-icons light-text shadow-text" style="font-weight: 100">&#xE879;</i> ออกจากระบบ
+                </ion-item>
+				<ion-item ng-click="loadTasks()" class="item-icon-right light-text pretty-thai-text shadow-text" style="background: rgba(255, 255, 255, 0.4);">
+					<i class="icon ion-android-refresh" ></i>สายเรียกเข้า
+				</ion-item>
+				<ion-item ng-if="emrequests == null || emrequests.length ==0" class="item-icon-left light-text pretty-thai-text">
+                    <i class="icon material-icons light-text" style="font-weight: 100">&#xE002;</i> ยังไม่มีงานเรียกเข้า
+                </ion-item>
+				<ion-item menu-close ng-repeat="er in emrequests" href="#/app/home/{{$index}}" style="background: rgba(255, 255, 255, 0.5);" class="item no-margin item-avatar light-text pretty-thai-text">
+					 <img class="img-circle" ng-if="er.patient.photoFilePath !=null" src='{{URL_PREFIX + er.patient.photoFileURI}}'>
+					 <img class="img-circle" ng-if="er.patient.photoFilePath ==null" src="img/person.png">
+					 {{er.patient.firstname}} {{er.patient.lastname}}<BR>
+					
+					<h4 class="pretty-thai-text light-text">{{statusTH(er.status)}}</h4>
+                </ion-item>
+
+			</ion-list>
+        </ion-content>
+    </ion-side-menu>
+
+</ion-side-menus>

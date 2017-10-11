@@ -1,0 +1,29 @@
+<ion-view view-title="บันทึกสถานะ">
+    <ion-content padding="true" class="has-header">
+        <form name="form" class="list" novalidate>
+    
+			<div class="list" style="margin:2em;">
+				<h4 class="pretty-thai-text yellow-text">เลือกสถานะ</h4>
+				<label class="item item-select" style="margin-bottom:1em;">
+						<select class="pretty-thai-text" ng-model="log.status" ng-required>
+							 <option class="pretty-thai-text" ng-repeat="sta in statusList" value="{{sta}}">{{statusTH(sta)}}</option>
+						</select>
+
+				</label>
+				<label class="item item-input item-floating-label" style="margin-bottom:1em;">
+						<p class="input-label pretty-thai-text">ข้อความ</p>
+						<input class="pretty-thai-text" type="text" placeholder="ข้อความ" ng-model="log.note" ng-required >
+				</label>
+				
+			</div>
+
+			 <div style="padding:0.8em;">
+				<button ng-click="submit()" style="float:right;" class="button button button-calm pretty-thai-text" ng-disabled="form.$invalid">บันทึก</button>
+				<button ng-click="back()" style="float:right;margin-right:0.3em;" class="button button button-energized pretty-thai-text" >ยกเลิก</button>
+			</div>
+            
+          
+           
+        </form>
+    </ion-content>
+</ion-view>

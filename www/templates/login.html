@@ -1,0 +1,25 @@
+<ion-view view-title="Login"  class="login-content">
+    <ion-content style="background: url(img/bg-106.jpg) center; background-size: cover; align:center; vertical-align: middle;">
+       <div>
+           <h1 class="appname padding-left">Life <small class="yellow-text">Guard</small></h1>
+		   <h5 class="light-text pretty-slim-text padding-left">Powered By Life Guard</h4>
+			<div class="list padding">
+				<label class="item item-input item-icon-left item-floating-label pretty-thai-text" style="background: rgba(255, 255, 255, 0.7);">
+                   <i class="icon ion-android-person placeholder-icon"></i><input type="text"  class="dark-text pretty-thai-text center-text" placeholder="Username" ng-model="formData.username">
+				</label>
+				<label class="item item-input item-icon-left item-floating-label pretty-thai-text" style="background: rgba(255, 255, 255, 0.6);">
+                    <i class="icon ion-key placeholder-icon"></i><input type="password"  class="dark-text pretty-thai-text center-text" placeholder="Password"  ng-model="formData.password">
+				</label>
+				<div class="padding"></div>
+				 <div class=" login-button">
+				<button ng-click="ksmLogin()" class="button  pretty-thai-text icon-left ion-log-in button-stable ink">เข้าสู่ระบบ</button>
+				
+				<button ng-click="ksmRegister()" class="button pretty-thai-text icon-left ion-android-create button-energized ink">ลงทะเบียน</button>
+			
+				</div>
+		   </div>
+			<p class="bottom-text" nowrap>All rights reserved 2017</p>
+		
+		</div>
+    </ion-content>
+</ion-view>

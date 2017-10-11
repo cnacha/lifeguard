@@ -1,0 +1,48 @@
+<ion-view view-title="งานบริการฉุกเฉิน">
+	<ion-nav-buttons side="right">
+		<button ng-click="showMenu()" class="button button-fab button-energized ink"><i class="icon ion-android-more-vertical"></i></button>
+	</ion-nav-buttons>
+    <ion-content  ng-class="{expanded:$scope.isExpanded}" style="background: url(img/bg-106.jpg) center; background-size: cover; align:center; vertical-align: middle;">
+		
+		<div ng-if="patient!=null">
+			<div class="row">
+				<div class="col">
+					<span class="avatar" ng-if="patient.photoFilePath ==null" style="background-image: url('img/person.png');"></span>	
+					<span class="avatar" ng-if="patient.photoFilePath !=null" style="background-image: url('{{patient.photoFileURL}}');"></span>
+				</div>
+				<div class="col col-80 no-padding">
+					<div class="row no-margin padding-left">
+						<div class="col col-80">
+							<h3 class="white-text shadow-text pretty-thai-text"> {{patient.firstname}}  {{patient.lastname}} </h3>
+							<div class="row pretty-thai-text no-margin no-padding">
+									<div class="col col-20 col-center">
+										<span ng-if="emrequest.patient.gender == 'male'"><i class="icon ion-male white-text shadow-text big-text"></i> </span>
+										<span ng-if="emrequest.patient.gender == 'female'"><i class="icon ion-female white-text shadow-text big-text"></i> </span>
+									</div>
+									<div class="col ">
+										<small> อายุ {{emrequest.patient.age}} ปี</small><BR/>
+										<small>{{emrequest.patient.disease}}</small>
+									</div>
+								</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="row padding-left " style="background: rgba(0, 0, 0, 0.3)">
+				<div class="col col-33 col-center">
+					<img src="img/ambulance.png" width="50%" >
+				</div>
+				<div class="col">
+					<h5 class="pretty-thai-text yellow-text shadow-text">{{statusTH(patient.currentStatus)}}</h5>
+					<small ng-if="emrequest.locationDetails != null" class="pretty-thai-text light-text">สถานที่รับ {{emrequest.locationDetails}}<BR/></small>
+					<small ng-if="emrequest.emDriverId != 0" class="pretty-thai-text light-text shadow-text">คนขับ: {{emrequest.driver.firstname}} {{emrequest.driver.lastname}}<BR/></small>
+					<small ng-if="findingroute" class="pretty-thai-text light-text">กำลังค้นหาเส้นทาง ...<BR/></small>
+					<small ng-if="distance != 0" class="pretty-thai-text light-text"><span ng-bind="distance"></span> กิโลเมตร </small> <small ng-if="duration != 0" class="pretty-thai-text light-text"><span ng-bind="duration"></span> นาที </small>
+				</div>
+			</div>
+		</div>
+		<div ng-if="patient!=null" id="patient-map" ></div>
+    </ion-content>
+</ion-view>

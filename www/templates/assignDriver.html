@@ -1,0 +1,31 @@
+<ion-view view-title="มอบหมายงาน">
+    <ion-content padding="true" class="has-header">
+		<div class="im-wrapper">
+		<h4 class="pretty-thai-text dark-text">โปรดเลือกพนักงานขับรถบริการฉุกเฉิน</h4>
+		<form   name="myForm" class="list" novalidate>
+			<div class="row no-padding no-margin" ng-repeat="driver in driverList">
+				<div class="col col-center">
+					<button ng-click="phonecall({{driver.phone}})" class="button button-icon icon ion-android-call button-stable"></button>
+				</div>
+				<div class="col col-center">
+					<label class="item item-button-left item-radio " >
+						<input type="radio" name="group" ng-model="formData.driver" value="{{driver.id}}" ng-required="true">
+						<div class="item-content pretty-thai-text">
+							{{driver.firstname}} {{driver.lastname}}
+							<BR/><small>{{driver.phone}}</small>
+						</div>
+						<i class="radio-icon ion-checkmark"></i>
+					</label>
+				</div>
+			</div>
+			
+			<button class=" button login-button pretty-thai-text button-full button-energized ink" ng-disabled="myForm.$invalid" ng-click="submit()" >
+					บันทึก
+                </button>
+			<button class=" button login-button pretty-thai-text button-full button-stable ink"  ui-sref="app.home" >
+					ยกเลิก
+                </button>
+		</form>
+		</div>
+    </ion-content>
+</ion-view>

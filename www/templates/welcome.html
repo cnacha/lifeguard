@@ -1,0 +1,18 @@
+<ion-view view-title="Life Guard" hide-nav-bar="true">
+	<ion-nav-buttons side="right">
+		<button ng-click="loadTasks()" class="button button-fab button-energized ink"><i class="icon ion-android-refresh"></i></button>
+	</ion-nav-buttons>
+    <ion-content  ng-class="{expanded:$scope.isExpanded}" style="background: url(img/bg-106.jpg) center; background-size: cover; align:center; vertical-align: middle;">
+		<div class="padding center-text">
+			<img src="img/ambulance.png" width="60%" height="60%">
+			<h2 class="pretty-thai-text light-text">ขอต้อนรับสู่ Life Guard</h2>
+			<p class="pretty-thai-text light-text">คุณสามารถรอรับการเรียกฉุกเฉินได้ที่นี้</p>
+			<h4 class="pretty-thai-text light-text">ยังไม่มีงานมอบหมายจากศูนย์ประสานงาน</h4>
+			
+			<!--
+			<h3 class="pretty-thai-text light-text">กดปุ่มเพื่อตั้งตำแหน่งศูนย์ฉุกเฉิน</h3>
+			<button class="pretty-thai-text dark-text button button-energized ink" ng-click="setLocation()">ตั้งค่าตำแหน่ง</button>
+			-->
+		</div>
+    </ion-content>
+</ion-view>
