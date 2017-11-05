@@ -20,7 +20,8 @@ h3 {
 
 }
 .yellow-text{
-	color: #f8cd3a
+	color: #f9ea13
+
 }
 .yellow-background{
 	background-color: #f8cd3a
@@ -889,7 +890,7 @@ background: #e8e8e8; }
 	display: none;
 }
 .platform-ios .action-sheet-has-icons .button {
-padding-left: 56px; 
+	padding-left: 56px; 
 }
 
 .container ul {

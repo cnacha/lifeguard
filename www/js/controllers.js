@@ -361,13 +361,21 @@ angular.module('starter.controllers', ['ionic','ionic.cloud'])
   
 })
 
-.controller("LogoutCtrl",function($scope,$state, $ionicLoading,methodFactory) {
+.controller("LogoutCtrl", function ($scope, $state,$http, $ionicLoading, methodFactory) {
+	console.log("LogoutCtrl called");
+	$ionicLoading.show();
+	var uObj = JSON.parse(window.localStorage.getItem('user'));
+	console.log("user: "+JSON.stringify(uObj));
+	$http.get(URL_PREFIX + "/api/security/logout.do?username=" + uObj.username)
+					.then(function (res) {
+						$ionicLoading.hide();
+						console.log('Successfully logout..');
+						methodFactory.reset();
+						$state.go('app.login');
+					}, function (err) {
+						console.error('ERR', JSON.stringify(err));
+					});
 	
-		console.log("LogoutCtrl called");
-		methodFactory.reset();		
-		$state.go('app.login');
-		
-		
 })
 
 .controller('WelcomeCtrl', function($scope,$rootScope, $window,$ionicActionSheet, $ionicHistory,$ionicNavBarDelegate,$ionicSideMenuDelegate, $stateParams,$ionicPopup, $http,$filter, $timeout, ionicMaterialMotion,$ionicLoading, ionicMaterialInk) {
@@ -493,7 +501,7 @@ angular.module('starter.controllers', ['ionic','ionic.cloud'])
 			icon: hImage,
 			title: "Home"
 		});
-		
+		//var options = {maximumAge: 0, timeout: 10000, enableHighAccuracy:true};
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			$ionicLoading.hide();
 			$scope.findingroute = false;

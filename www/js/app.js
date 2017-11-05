@@ -26,6 +26,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material','ion
 				"iconColor": "#6246a58a",
 				"forceShow" : false
 			},
+			ios: {
+				"senderID": "1091753368379",
+				"alert": true,
+				"badge": true,
+				"sound": true
+			},
 			browser: {
 				pushServiceURL: 'http://push.api.phonegap.com/v1/push'
 			}
