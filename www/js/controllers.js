@@ -378,6 +378,83 @@ angular.module('starter.controllers', ['ionic','ionic.cloud'])
 	
 })
 
+.controller('ProfileCtrl', function ($scope, $rootScope, $window, $ionicHistory, $ionicNavBarDelegate, $ionicSideMenuDelegate, $stateParams, $ionicPopup, $http, $filter, $timeout, ionicMaterialMotion, $ionicLoading, ionicMaterialInk, $state) {
+		$rootScope.showMenu = true;
+		// Set Header
+		$scope.$parent.showHeader();
+		$scope.$parent.clearFabs();
+		$scope.isExpanded = true;
+		$scope.$parent.setExpanded(true);
+		$scope.$parent.setHeaderFab(false);
+		$ionicNavBarDelegate.showBackButton(true);
+		$ionicSideMenuDelegate.canDragContent(true);
+		
+		var userObj = JSON.parse(window.localStorage.getItem('user'));
+		$scope.formData = {};
+		$scope.formData.firstname = userObj.firstname;
+		$scope.formData.lastname = userObj.lastname;
+		$scope.formData.phone = userObj.phone;
+		$scope.formData.email = userObj.email;
+		$scope.saveData = function(){
+			userObj.firstname = $scope.formData.firstname;
+			userObj.lastname = $scope.formData.lastname;
+			userObj.phone = $scope.formData.phone;
+			userObj.email = $scope.formData.email;
+			$ionicLoading.show();
+			var headers = {'Content-Type': 'application/json'};
+			$http.post(URL_PREFIX + "/api/user/save.do", JSON.stringify(userObj), headers).
+				success(function (data, status, headers, config) {
+					$ionicLoading.hide();
+					window.localStorage.setItem('user',JSON.stringify(userObj));
+					var alertPopup = $ionicPopup.alert({
+							title: 'Complete',
+							template: 'การแก้ไขข้อมูลสร็จสมบูรณ์ !'
+						});
+					alertPopup.then(function (res) {
+						$state.go("app.home");
+					});
+					 
+				}).
+				error(function (data, status, headers, config) {
+					console.log("error" + JSON.stringify(data));
+					$ionicLoading.hide();
+				});
+		}
+		
+		$scope.changePW = function(){
+			if( $scope.formData.password != $scope.formData.repassword){
+				var alertPopup = $ionicPopup.alert({
+							title: 'Error',
+							template: 'รหัสผ่านที่ใส่ไม่ตรงกัน '
+						});
+				return;
+			}
+			
+			$ionicLoading.show();
+			userObj.password = $scope.formData.password;
+			var headers = {'Content-Type': 'application/json'};
+			$http.post(URL_PREFIX + "/api/user/changePassword.do", JSON.stringify(userObj), headers).
+				success(function (data, status, headers, config) {
+					$ionicLoading.hide();
+					var alertPopup = $ionicPopup.alert({
+							title: 'Complete',
+							template: 'การแก้ไขรหัสผ่านเสร็จสมบูรณ์ !'
+						});
+					alertPopup.then(function (res) {
+						$state.go("app.home");
+					});
+					window.localStorage.setItem('user',JSON.stringify(userObj));
+				}).
+				error(function (data, status, headers, config) {
+					console.log("error" + JSON.stringify(data));
+					$ionicLoading.hide();
+				});
+		}
+		/**
+		
+		**/
+	})
+	
 .controller('WelcomeCtrl', function($scope,$rootScope, $window,$ionicActionSheet, $ionicHistory,$ionicNavBarDelegate,$ionicSideMenuDelegate, $stateParams,$ionicPopup, $http,$filter, $timeout, ionicMaterialMotion,$ionicLoading, ionicMaterialInk) {
 	console.log("WelcomeCtrl is called");
 	// Set Header
