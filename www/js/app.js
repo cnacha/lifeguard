@@ -9,6 +9,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material','ion
 .run(function($ionicPlatform, $ionicLoading,$rootScope,$cordovaNativeAudio,$ionicPopup,$timeout) {
 	
     $ionicPlatform.ready(function() {
+		
+		ionic.Platform.fullScreen();
+		
 		// ChartJS
         Chart.defaults.global.defaultFontColor = 'rgba(255, 255, 255, 0.8)';
 		Chart.defaults.global.defaultFontFamily = "'Prompt', sans-serif";
@@ -223,6 +226,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material','ion
             'menuContent': {
                 templateUrl: 'templates/register.html',
                 controller: 'RegisterCtrl'
+            },
+            'fabContent': {}
+            }
+    })
+	
+	.state('app.resetpassword', {
+        url: '/resetpassword',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/resetpassword.html',
+                controller: 'ResetPasswordCtrl'
             },
             'fabContent': {}
             }

@@ -322,13 +322,6 @@ angular.module('starter.controllers', ['ionic','ionic.cloud'])
 					});
 					alertPopup.then(function(res) {});
 					
-				} else if(data == "-4"){
-					 var alertPopup = $ionicPopup.alert({
-					 title: 'Registration Fail',
-					 template: 'รหัสคนไข้(HN) มีผู้ใช้งานอยู่แล้ว <BR/>โปรดใส่รหัสใหม่ หรือ ปล่อยว่างเพื่อสร้างบัญชีผู้ใช้ชั่วคราว'
-					});
-					alertPopup.then(function(res) {});
-					
 				} else if(data == "-1") {
 					var alertPopup = $ionicPopup.alert({
 					 title: 'Registration Fail',
@@ -359,6 +352,50 @@ angular.module('starter.controllers', ['ionic','ionic.cloud'])
 	}
 	
   
+})
+
+.controller('ResetPasswordCtrl', function($scope, $stateParams,$state,$ionicSideMenuDelegate, $timeout,$http,$ionicPopup, ionicMaterialMotion,$ionicLoading, ionicMaterialInk) {
+    // Set Header
+    $scope.$parent.showHeader();
+    $scope.$parent.clearFabs();
+    $scope.isExpanded = false;
+    $scope.$parent.setExpanded(false);
+    $scope.$parent.setHeaderFab(false);
+	$ionicSideMenuDelegate.canDragContent(false);
+	 $timeout(function() {
+        $scope.$parent.hideHeader();
+    }, 0);
+	$scope.formData ={};
+	
+	$scope.submit = function() {
+		$ionicLoading.show();
+		var headers = { 'Content-Type':'application/json' };
+		$http.post(URL_PREFIX+"/api/security/resetPassword.do",JSON.stringify($scope.formData),headers).
+			success(function(data, status, headers, config) 
+			{
+				$ionicLoading.hide();
+				if(data.status == "-1"){
+					var alertPopup = $ionicPopup.alert({
+					 title: 'Reset Password Fail',
+					 template: 'เกิดความผิดพลาดในระหว่างการตั้งรหัส <BR/>'+data.key
+					});
+					alertPopup.then(function(res) {});
+				} else {
+					var alertPopup = $ionicPopup.alert({
+					 title: 'Reset Password Success',
+					 template: 'การตั้งรหัสสำเร็จ โปรดตรวจสอบข้อความในอีเมล'
+					});
+					alertPopup.then(function(res) { $state.go('app.login'); });
+				}
+					
+				console.log(JSON.stringify(data));
+			}).
+			error(function(data, status, headers, config) 
+			{
+				console.log("error: "+data);
+				$ionicLoading.hide();
+			});
+	}
 })
 
 .controller("LogoutCtrl", function ($scope, $state,$http, $ionicLoading, methodFactory) {
