@@ -23,8 +23,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material','ion
 			console.log("current position "+pos);
 		});
 
-		ionic.Platform.fullScreen();
-		
 		var push = PushNotification.init({
 			android: {
 				"senderID": "1091753368379",
