@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material','ionic.cloud', 'ionMdInput','ngCordova','angularjs-gauge','chart.js','ion-datetime-picker','ng-mfb'])
 
-.run(function($ionicPlatform, $ionicLoading,$rootScope,$cordovaNativeAudio,$ionicPopup,$timeout) {
+.run(function($ionicPlatform,$ionicLoading,$rootScope,$cordovaNativeAudio,$ionicPopup,$timeout) {
 	
     $ionicPlatform.ready(function() {
 		
@@ -22,6 +22,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material','ion
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			console.log("current position "+pos);
 		});
+
+		ionic.Platform.fullScreen();
 		
 		var push = PushNotification.init({
 			android: {
