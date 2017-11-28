@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>1091753368379-cjtd97jqeuj04laoiv8h0j1a7r8gds62.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1091753368379-cjtd97jqeuj04laoiv8h0j1a7r8gds62</string>
+	<key>API_KEY</key>
+	<string>AIzaSyATL43GYSMXpmYxXFv7g7Ql6WWAx7VPNho</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1091753368379</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.telabase.lifeguard</string>
+	<key>PROJECT_ID</key>
+	<string>life-care-2a9b2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>life-care-2a9b2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1091753368379:ios:50d3c5ae185947bf</string>
+	<key>DATABASE_URL</key>
+	<string>https://life-care-2a9b2.firebaseio.com</string>
+</dict>
+</plist>

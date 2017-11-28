@@ -314,15 +314,15 @@ angular.module('starter.controllers', ['ionic','ionic.cloud'])
 			success(function(data, status, headers, config) 
 			{
 				$ionicLoading.hide();
-				console.log("success: "+data);
-				if(data == "-3"){
+				console.log("success: "+JSON.stringify(data));
+				if(data.status == "-3"){
 					 var alertPopup = $ionicPopup.alert({
 					 title: 'Registration Fail',
 					 template: 'Username มีผู้ใช้แล้ว <BR/>โปรดใส่ username ใหม่'
 					});
 					alertPopup.then(function(res) {});
 					
-				} else if(data == "-1") {
+				} else if(data.status == "-1") {
 					var alertPopup = $ionicPopup.alert({
 					 title: 'Registration Fail',
 					 template: 'ระบบเกิดความผิดพลาดในระหว่างการลงเบียน โปรดลงทะเบียนใหม่'

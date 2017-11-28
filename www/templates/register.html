@@ -18,7 +18,7 @@
 			<div class="list" >
 			<ion-md-input class="pretty-thai-text" placeholder="ชื่อ" highlight-color="energized"  ng-model="formData.firstname" type="text" ng-required="true"></ion-md-input>
 			<ion-md-input class="pretty-thai-text" placeholder="นามสกุล" highlight-color="energized"  ng-model="formData.lastname" type="text" ng-required="true"></ion-md-input>
-			<ion-md-input class="pretty-thai-text" placeholder="เบอร์โทรศัพท์" highlight-color="energized"  ng-model="formData.phone" type="tel" ng-required="true"></ion-md-input>
+			<ion-md-input class="pretty-thai-text" placeholder="เบอร์โทรศัพท์" highlight-color="energized"  ng-model="formData.phone" type="tel" name="phone" ng-pattern="/^[0-9]{10,10}$/" ng-required="true"></ion-md-input>
 			<ion-md-input class="pretty-thai-text" placeholder="อีเมล์" highlight-color="energized"  ng-model="formData.email" type="email" ng-required="true"></ion-md-input>
 			<BR/><BR/>
 			<div class="rcorners"><div class="padding">
@@ -51,6 +51,8 @@
 			 <div class="padding">
 				<p class="pretty-thai-text light-text" ng-show="myForm.$error.required">*  โปรดกรอกข้อมูลให้ครบ</p>
 				<p class="pretty-thai-text light-text" ng-show="myForm.$error.email">* โปรดกรอกอีเมล์ที่ถูกต้อง</p>
+				<p class="pretty-thai-text light-text" ng-show="myForm.phone.$error.pattern">* โปรดเบอร์โทรศัพท์ให้ถูกต้อง</p>
+
 			</div>
 			 
 			<button class=" button login-button pretty-thai-text button-full button-energized ink" ng-disabled="myForm.$invalid" ng-click="submit()" >
