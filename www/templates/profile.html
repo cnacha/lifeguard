@@ -18,11 +18,13 @@
 			 </label>
 			 <label class="item item-input item-floating-label pretty-thai-text">
 					<span class="input-label pretty-thai-text">โทรศัพท์</span>
-					<input type="text" class="pretty-thai-text" placeholder="โทรศัพท์" name="phone" ng-model="formData.phone" ng-required="true">
+					<input type="text" class="pretty-thai-text" placeholder="โทรศัพท์" name="phone" ng-model="formData.phone" ng-pattern="/^[0-9]{10,10}$/" ng-required="true">
 			 </label>
 			  <div class="padding">
 				<p class="pretty-thai-text dark-text" ng-show="myForm.$error.required">*  โปรดกรอกข้อมูลให้ครบ</p>
 				<p class="pretty-thai-text dark-text" ng-show="myForm.$error.email">* โปรดกรอกอีเมล์ที่ถูกต้อง</p>
+				<p class="pretty-thai-text dark-text" ng-show="myForm.phone.$error.pattern">* โปรดกรอกเบอร์โทรศัพท์ให้ถูกต้อง</p>
+
 			</div>
 			 
 			 <button class="button pretty-thai-text button-energized ink" ng-disabled="myForm.$invalid" ng-click="saveData()" >
